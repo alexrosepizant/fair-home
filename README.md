@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/02b1e293-c0eb-4068-b4e1-f2d10581b8ca/deploy-status)](https://app.netlify.com/sites/fair-home/deploys)
+
 # FairHome - Household Task Management with Emotional Intelligence
 
 FairHome is a modern web application designed to promote equitable distribution of household tasks while considering the emotional well-being of household members. It combines practical task management with emotional intelligence to create a more harmonious living environment.
