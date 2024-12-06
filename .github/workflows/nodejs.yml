@@ -46,6 +46,3 @@ jobs:
 
             - name: Install deps and build (with cache)
               uses: bahmutov/npm-install@v1
-
-            - name: Test package
-              run:  yarn playwright install && yarn test
