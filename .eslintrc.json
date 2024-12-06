@@ -1,0 +1,111 @@
+{
+    "root": true,
+    "ignorePatterns": ["**/*"],
+    "plugins": ["@nx"],
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "rules": {
+                "@nx/enforce-module-boundaries": [
+                    "error",
+                    {
+                        "allow": [],
+                        "depConstraints": [
+                            {
+                                "sourceTag": "scope:app",
+                                "onlyDependOnLibsWithTags": [
+                                    "type:shell",
+                                    "type:shared"
+                                ]
+                            },
+                            {
+                                "sourceTag": "type:api",
+                                "onlyDependOnLibsWithTags": ["type:domain"]
+                            },
+                            {
+                                "sourceTag": "type:shell",
+                                "onlyDependOnLibsWithTags": [
+                                    "type:feature",
+                                    "type:util"
+                                ]
+                            },
+                            {
+                                "sourceTag": "type:feature",
+                                "onlyDependOnLibsWithTags": [
+                                    "type:domain",
+                                    "type:util",
+                                    "type:ui",
+                                    "type:mock"
+                                ]
+                            },
+                            {
+                                "sourceTag": "type:ui",
+                                "onlyDependOnLibsWithTags": [
+                                    "type:util",
+                                    "type:mock"
+                                ]
+                            },
+                            {
+                                "sourceTag": "type:domain",
+                                "onlyDependOnLibsWithTags": [
+                                    "type:util",
+                                    "type:mock"
+                                ]
+                            },
+                            {
+                                "sourceTag": "type:mock",
+                                "onlyDependOnLibsWithTags": ["type:util"]
+                            },
+                            {
+                                "sourceTag": "type:shared",
+                                "onlyDependOnLibsWithTags": ["type:api"]
+                            }
+                        ]
+                    }
+                ],
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "type": "attribute",
+                        "prefix": "app",
+                        "style": "camelCase"
+                    }
+                ],
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "type": "element",
+                        "prefix": "app",
+                        "style": "kebab-case"
+                    }
+                ],
+                "indent": "error"
+            },
+            "extends": [
+                "plugin:@angular-eslint/recommended",
+                "plugin:@angular-eslint/template/process-inline-templates",
+                "prettier"
+            ]
+        },
+        {
+            "files": ["*.ts", "*.tsx"],
+            "extends": ["plugin:@nx/typescript"],
+            "rules": {
+                "@typescript-eslint/no-extra-semi": "error",
+                "no-extra-semi": "off"
+            }
+        },
+        {
+            "files": ["*.html"],
+            "extends": ["plugin:@angular-eslint/template/recommended"],
+            "rules": {}
+        },
+        {
+            "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+            "env": {
+                "jest": true
+            },
+            "rules": {}
+        }
+    ]
+}
